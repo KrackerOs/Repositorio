@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA - Placas de Vídeo</title>
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        
+        /* Cores da NVIDIA */
+        :root {
+            --nvidia-green: #76b900;
+            --nvidia-dark: #000000;
+            --nvidia-light: #f5f5f5;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--nvidia-dark);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--nvidia-green);
+        }
+        
+        .logo {
+            width: 120px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--nvidia-light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--nvidia-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.nvidia.com/aem-dam/Solutions/geforce/ada/rtx-40-series/geforce-rtx-4090/geforce-rtx-4090-product-gallery-full-screen-3840-3.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--nvidia-green);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .btn {
+            background-color: var(--nvidia-green);
+            color: var(--nvidia-dark);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #8ed100;
+            transform: translateY(-3px);
+        }
+        
+        /* Seção de Produtos */
+        .products {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .products h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--nvidia-green);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-info p {
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+        
+        .product-info .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--nvidia-green);
+        }
+        
+        /* Seção de Tecnologias */
+        .tech {
+            padding: 4rem 2rem;
+            background-color: #1e1e1e;
+        }
+        
+        .tech h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--nvidia-green);
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tech-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .tech-icon {
+            font-size: 3rem;
+            color: var(--nvidia-green);
+            margin-bottom: 1rem;
+        }
+        
+        .tech-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--nvidia-dark);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links a {
+            color: var(--nvidia-light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--nvidia-green);
+        }
+        
+        .copyright {
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-horiz-500x200-2c50-p@2x.png" alt="NVIDIA Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#products">Produtos</a></li>
+                <li><a href="#tech">Tecnologias</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Placas de Vídeo NVIDIA</h1>
+        <p>Experimente o poder da próxima geração de GPUs com a revolucionária arquitetura Ada Lovelace.</p>
+        <a href="#products" class="btn">Explorar Produtos</a>
+    </section>
+    
+    <!-- Seção de Produtos -->
+    <section class="products" id="products">
+        <h2>Nossas Placas de Vídeo</h2>
+        <div class="product-grid">
+            <!-- RTX 4090 -->
+            <div class="product-card">
+                <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4090/geforce-rtx-4090-product-gallery-full-screen-3840-3.jpg" alt="RTX 4090" class="product-img">
+                <div class="product-info">
+                    <h3>GeForce RTX 4090</h3>
+                    <p>A GPU definitiva para jogos e criação, com desempenho sem precedentes.</p>
+                    <div class="price">A partir de R$ 12.999</div>
+                    <a href="#" class="btn">Ver Detalhes</a>
+                </div>
+            </div>
+            
+            <!-- RTX 4080 -->
+            <div class="product-card">
+                <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4080/geforce-rtx-4080-product-gallery-full-screen-3840-3.jpg" alt="RTX 4080" class="product-img">
+                <div class="product-info">
+                    <h3>GeForce RTX 4080</h3>
+                    <p>Desempenho excepcional para jogos em 4K e realidade virtual.</p>
+                    <div class="price">A partir de R$ 8.999</div>
+                    <a href="#" class="btn">Ver Detalhes</a>
+                </div>
+            </div>
+            
+            <!-- RTX 4070 Ti -->
+            <div class="product-card">
+                <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4070-ti/geforce-rtx-4070ti-product-gallery-full-screen-3840-3.jpg" alt="RTX 4070 Ti" class="product-img">
+                <div class="product-info">
+                    <h3>GeForce RTX 4070 Ti</h3>
+                    <p>O equilíbrio perfeito entre desempenho e valor.</p>
+                    <div class="price">A partir de R$ 6.499</div>
+                    <a href="#" class="btn">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção de Tecnologias -->
+    <section class="tech" id="tech">
+        <h2>Tecnologias Inovadoras</h2>
+        <div class="tech-grid">
+            <!-- DLSS 3 -->
+            <div class="tech-card">
+                <div class="tech-icon">🤖</div>
+                <h3>DLSS 3</h3>
+                <p>Inteligência artificial que gera quadros adicionais para melhor desempenho e qualidade visual.</p>
+            </div>
+            
+            <!-- Ray Tracing -->
+            <div class="tech-card">
+                <div class="tech-icon">✨</div>
+                <h3>Ray Tracing</h3>
+                <p>Iluminação, sombras e reflexos realistas simulados em tempo real.</p>
+            </div>
+            
+            <!-- Reflex -->
+            <div class="tech-card">
+                <div class="tech-icon">⚡</div>
+                <h3>NVIDIA Reflex</h3>
+                <p>Tecnologia que reduz a latência do sistema para uma vantagem competitiva em jogos.</p>
+            </div>
+            
+            <!-- Studio -->
+            <div class="tech-card">
+                <div class="tech-icon">🎨</div>
+                <h3>NVIDIA Studio</h3>
+                <p>Drivers otimizados e ferramentas para criadores de conteúdo.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-horiz-500x200-2c50-p@2x.png" alt="NVIDIA Logo" class="footer-logo">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook">f</i></a>
+            <a href="#"><i class="fab fa-twitter">t</i></a>
+            <a href="#"><i class="fab fa-instagram">i</i></a>
+            <a href="#"><i class="fab fa-youtube">y</i></a>
+        </div>
+        <p class="copyright">© 2023 NVIDIA Corporation. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script>
+        // Efeito de rolagem suave para os links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animação ao rolar a página
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.product-card, .tech-card');
+            const windowHeight = window.innerHeight;
+            
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                if (cardPosition < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Inicializar opacidade dos cards
+        document.querySelectorAll('.product-card, .tech-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+        });
+    </script>
+</body>
+</html>

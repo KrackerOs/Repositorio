@@ -1,0 +1,20 @@
+.plan-btn {
+    display: inline-block;
+    background: var(--nvidia-green);
+    color: var(--black);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 700;
+    margin-top: 1rem;
+    transition: var(--transition);
+    text-decoration: none;
+    border: 2px solid transparent;
+}
+
+.plan-btn:hover {
+    background: transparent;
+    color: var(--nvidia-green);
+    border-color: var(--nvidia-green);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(118, 185, 0, 0.3);
+}

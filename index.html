@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA - Revolucionando a Experiência em Jogos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --nvidia-green: #76b900;
+            --dark-green: #0a5c00;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+            --black: #000;
+            --medium-gray: #e0e0e0;
+            --dark-blue: #0d1b2a;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--nvidia-green), var(--dark-green));
+            color: var(--white);
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -50px;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #ffffff, #e6ffe6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(118, 185, 0, 0.4);
+            }
+        }
+        
+        header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-subtitle {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--nvidia-green);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: var(--dark-blue);
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        nav a.active {
+            background: var(--nvidia-green);
+            color: var(--black);
+            font-weight: 700;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .tab-container {
+            margin-bottom: 2rem;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid var(--medium-gray);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--dark-gray);
+            position: relative;
+            transition: var(--transition);
+            margin-right: 5px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(118, 185, 0, 0.1);
+        }
+        
+        .tab-btn.active {
+            color: var(--nvidia-green);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--nvidia-green);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        article {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            transition: var(--transition);
+        }
+        
+        article:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid var(--nvidia-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--dark-blue);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 2.5rem;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            color: var(--dark-blue);
+            margin-top: 2rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 2rem auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+        
+        img:hover {
+            transform: scale(1.02);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 3rem 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        ul {
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 8px;
+            height: 8px;
+            background-color: var(--nvidia-green);
+            border-radius: 50%;
+        }
+        
+        a {
+            color: var(--nvidia-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--dark-green);
+            text-decoration: underline;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--nvidia-green);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--nvidia-green), var(--dark-green));
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, rgba(118, 185, 0, 0.1), rgba(10, 92, 0, 0.1));
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid rgba(118, 185, 0, 0.3);
+            position: relative;
+        }
+        
+        .highlight::before {
+            content: '\f06a';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--white);
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--nvidia-green);
+            border-radius: 50%;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .grid-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 1.8rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grid-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--nvidia-green), var(--dark-green));
+            transition: var(--transition);
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .grid-item:hover::after {
+            height: 8px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--nvidia-green);
+            color: var(--black);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+            vertical-align: middle;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--nvidia-green);
+            color: var(--black);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-green);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(118, 185, 0, 0.3);
+        }
+        
+        .btn:hover::after {
+            left: 100%;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--nvidia-green);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--white);
+            border: 4px solid var(--nvidia-green);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--nvidia-green);
+        }
+        
+        .timeline-content p {
+            margin-bottom: 0;
+        }
+        
+        .tech-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--nvidia-green);
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .tech-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-content p {
+            margin-bottom: 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .comparison-table th {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(118, 185, 0, 0.05);
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(118, 185, 0, 0.1);
+        }
+        
+        .feature-badge {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            background-color: var(--nvidia-green);
+            color: var(--black);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--nvidia-green), var(--dark-green));
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--nvidia-green);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--nvidia-green);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--nvidia-green);
+            color: var(--black);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background-color: var(--dark-green);
+            color: var(--white);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+                margin-bottom: -30px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .stats-container {
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                padding: 0.8rem 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav a {
+                margin: 0.3rem 0;
+                width: 90%;
+                text-align: center;
+            }
+            
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, 
+            .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-gamepad"></i> NVIDIA GeForce NOW</h1>
+        <p>Jogue os melhores jogos do mercado em qualquer dispositivo, sem necessidade de hardware potente</p>
+        <div class="header-subtitle">A revolução no cloud gaming chegou!</div>
+        
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">1500+</div>
+                <div class="stat-label">Jogos disponíveis</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">25M+</div>
+                <div class="stat-label">Jogadores ativos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">190+</div>
+                <div class="stat-label">Países atendidos</div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#" class="active"><i class="fas fa-home"></i> Início</a>
+        <a href="#tab7"><i class="fas fa-box-open"></i> Produtos</a>
+        <a href="#tab8"><i class="fas fa-microchip"></i> Tecnologias</a>
+        <a href="#tab9"><i class="fas fa-info-circle"></i> Sobre Nós</a>
+        <a href="#tab10"><i class="fas fa-envelope"></i> Contato</a>
+    </nav>
+
+    <main>
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="tab1"><i class="fas fa-globe"></i> Visão Geral</button>
+                <button class="tab-btn" data-tab="tab2"><i class="fas fa-tags"></i> Catálogo</button>
+                <button class="tab-btn" data-tab="tab3"><i class="fas fa-history"></i> História</button>
+                <button class="tab-btn" data-tab="tab4"><i class="fas fa-cogs"></i> Tecnologias</button>
+                <button class="tab-btn" data-tab="tab5"><i class="fas fa-gamepad"></i> Jogos em Destaque</button>
+                <button class="tab-btn" data-tab="tab6"><i class="fas fa-star"></i> Exemplos de Jogos</button>
+            </div>
+            
+            <div id="tab1" class="tab-content active">
+                <article>
+                    <h1>Explore os melhores jogos do catálogo</h1>
+                    
+                    <div class="card">
+                        <p>O NVIDIA GeForce NOW é a plataforma de cloud gaming mais avançada do mercado, permitindo que você jogue seus jogos favoritos de PC em qualquer dispositivo, sem a necessidade de hardware potente. Com servidores de última geração equipados com GPUs NVIDIA RTX, você experimenta gráficos incríveis e desempenho suave.</p>
+                        <p>Jogue Call of Duty, Fortnite, Cyberpunk 2077 e outros títulos AAA totalmente <strong>Grátis</strong> no plano básico, ou assine o GeForce NOW Priority para acesso a recursos premium como ray tracing, maior tempo de sessão e prioridade na fila.</p>
+                    </div>
+
+                    <h2>Como funciona o GeForce NOW?</h2>
+                    <p>O GeForce NOW é um serviço de streaming de jogos que roda os jogos em servidores NVIDIA na nuvem e transmite a imagem diretamente para o seu dispositivo. Isso significa que você pode jogar os jogos mais exigentes do mercado em um notebook simples, smartphone ou até mesmo em uma smart TV.</p>
+                    
+                    <div class="highlight">
+                        <p><strong>Para a surpresa de muitos</strong>, o GeForce NOW não necessita de um computador ou celular potente. O mais importante é que você tenha uma conexão de internet estável com pelo menos 15Mbps para qualidade HD (720p) ou 25Mbps para Full HD (1080p). Para jogar em 4K, recomenda-se conexão de 50Mbps ou superior.</p>
+                    </div>
+
+                    <h3>Vantagens do GeForce NOW</h3>
+                    <ul>
+                        <li><strong>Sem downloads ou instalações:</strong> Comece a jogar instantaneamente</li>
+                        <li><strong>Atualizações automáticas:</strong> Todos os jogos estão sempre atualizados</li>
+                        <li><strong>Compatibilidade multiplataforma:</strong> Jogue no PC, Mac, Chromebook, Android ou iOS</li>
+                        <li><strong>Progresso sincronizado:</strong> Continue de onde parou em qualquer dispositivo</li>
+                        <li><strong>Biblioteca pessoal:</strong> Conecte suas contas Steam, Epic Games, Ubisoft Connect e mais</li>
+                    </ul>
+
+                    <div class="grid">
+                        <div class="grid-item">
+                            <i class="fas fa-tachometer-alt tech-icon"></i>
+                            <h3>Desempenho</h3>
+                            <p>Até 120 FPS em 1080p no plano Priority e até 60 FPS no plano gratuito.</p>
+                            <div class="highlight">
+                                <p><strong>Latência:</strong> Menos de 40ms em servidores regionais</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-server tech-icon"></i>
+                            <h3>Infraestrutura</h3>
+                            <p>Mais de 50 data centers globais com GPUs NVIDIA RTX para baixa latência.</p>
+                            <div class="highlight">
+                                <p><strong>Disponibilidade:</strong> 99.9% uptime garantido</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div id="tab2" class="tab-content">
+                <article>
+                    <h1>Nossos Planos <span class="badge">NOVO</span></h1>
+                    <p>Escolha o plano que melhor atende às suas necessidades de jogo. Todos os planos dão acesso à mesma biblioteca de jogos, com diferenças na qualidade gráfica, tempo de sessão e prioridade na fila.</p>
+                    
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3><i class="fas fa-user"></i> Plano Grátis</h3>
+                            <div class="highlight">
+                                <p><strong>Grátis</strong> para sempre</p>
+                                <p>Sessões de até 1 hora</p>
+                                <p>1080p a 60 FPS</p>
+                                <p>Fila de espera padrão</p>
+                                <p>Acesso básico aos servidores</p>
+                                <a href="#" class="btn">Comece agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <h3><i class="fas fa-crown"></i> Plano Priority</h3>
+                            <div class="highlight">
+                                <p><strong>R$ 29,90</strong> /mês</p>
+                                <p>Sessões de até 6 horas</p>
+                                <p>1080p a 120 FPS</p>
+                                <p>Fila de espera prioritária</p>
+                                <p>RTX Ativado (Ray Tracing)</p>
+                                <a href="#" class="btn">Assinar agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <h3><i class="fas fa-rocket"></i> Plano Ultimate</h3>
+                            <div class="highlight">
+                                <p><strong>R$ 99,90</strong> /mês</p>
+                                <p>Sessões de até 8 horas</p>
+                                <p>4K HDR a 120 FPS</p>
+                                <p>Prioridade máxima</p>
+                                <p>RTX 4080 na nuvem</p>
+                                <p>DLSS 3 e Reflex</p>
+                                <a href="#" class="btn">Experimente o máximo</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Comparação detalhada dos planos</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Recurso</th>
+                                <th>Grátis</th>
+                                <th>Priority</th>
+                                <th>Ultimate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Resolução máxima</td>
+                                <td>1080p</td>
+                                <td>1080p</td>
+                                <td>4K</td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de quadros</td>
+                                <td>60 FPS</td>
+                                <td>120 FPS</td>
+                                <td>120 FPS</td>
+                            </tr>
+                            <tr>
+                                <td>Tempo de sessão</td>
+                                <td>1 hora</td>
+                                <td>6 horas</td>
+                                <td>8 horas</td>
+                            </tr>
+                            <tr>
+                                <td>Ray Tracing</td>
+                                <td>Não</td>
+                                <td>Sim</td>
+                                <td>Sim</td>
+                            </tr>
+                            <tr>
+                                <td>Prioridade na fila</td>
+                                <td>Padrão</td>
+                                <td>Alta</td>
+                                <td>Máxima</td>
+                            </tr>
+                            <tr>
+                                <td>GPUs disponíveis</td>
+                                <td>GTX 1060</td>
+                                <td>RTX 2080</td>
+                                <td>RTX 4080</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </div>
+            
+            <div id="tab3" class="tab-content">
+                <article>
+                    <h1>Nossa história</h1>
+                    
+                    <div class="card">
+                        <p>A NVIDIA Corporation foi fundada em 1993 por Jensen Huang, Chris Malachowsky e Curtis Priem, com a visão de acelerar a computação gráfica. Desde então, a NVIDIA se tornou uma das empresas mais inovadoras do mundo, revolucionando não apenas os jogos, mas também a computação profissional, a inteligência artificial e o data science.</p>
+                        <p>O serviço GeForce NOW foi lançado em beta em 2015 e oficialmente em 2020, representando a visão da NVIDIA para o futuro dos jogos - onde qualquer pessoa pode acessar os melhores jogos, independentemente do hardware que possui.</p>
+                    </div>
+                    
+                    <h2>Linha do tempo da NVIDIA</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>1993 - Fundação</h3>
+                                <p>A NVIDIA é fundada em Santa Clara, Califórnia, com o objetivo de revolucionar a computação gráfica.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>1999 - GeForce 256</h3>
+                                <p>Lançamento da primeira GPU GeForce, introduzindo transformação e iluminação aceleradas por hardware.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>2006 - CUDA</h3>
+                                <p>A NVIDIA lança a arquitetura CUDA, permitindo que GPUs sejam usadas para computação geral.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>2015 - GeForce NOW Beta</h3>
+                                <p>Primeira versão beta do serviço de cloud gaming GeForce NOW é lançada.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>2018 - RTX</h3>
+                                <p>A NVIDIA lança as GPUs RTX com ray tracing em tempo real, revolucionando os gráficos em jogos.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>2020 - GeForce NOW</h3>
+                                <p>Lançamento oficial do GeForce NOW, com suporte a múltiplas lojas de jogos.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>2023 - DLSS 3</h3>
+                                <p>Introdução do DLSS 3 com geração de quadros, proporcionando aumentos de desempenho ainda maiores.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Jensen Huang - O visionário</h2>
+                    <p>Jensen Huang, co-fundador, presidente e CEO da NVIDIA, é um dos executivos mais respeitados do Vale do Silício. Sob sua liderança, a NVIDIA transformou-se de uma empresa focada em gráficos 3D para uma líder em computação acelerada e inteligência artificial.</p>
+                    <div class="highlight">
+                        <p>"Nosso trabalho na NVIDIA está ajudando a moldar o futuro não apenas dos jogos, mas de toda a computação. Acreditamos que o cloud gaming será tão transformador quanto o streaming foi para a música e vídeo." - Jensen Huang</p>
+                    </div>
+                </article>
+            </div>
+            
+            <div id="tab4" class="tab-content">
+                <article>
+                    <h1>Tecnologias Inovadoras</h1>
+                    <p>A NVIDIA é pioneira no desenvolvimento de tecnologias que revolucionam a experiência de jogo. Conheça as principais tecnologias que fazem do GeForce NOW um serviço único:</p>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="tech-content">
+                            <h3>NVIDIA DLSS</h3>
+                            <p>Deep Learning Super Sampling (DLSS) é uma tecnologia de renderização por AI que aumenta o desempenho enquanto mantém ou melhora a qualidade da imagem. Usa redes neurais profundas treinadas em supercomputadores NVIDIA para gerar quadros mais nítidos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="tech-content">
+                            <h3>Ray Tracing</h3>
+                            <p>O ray tracing simula o comportamento físico da luz para criar gráficos com iluminação, sombras e reflexos incrivelmente realistas. As GPUs NVIDIA RTX oferecem aceleração de hardware dedicada para ray tracing, tornando possível em tempo real.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="tech-content">
+                            <h3>NVIDIA Reflex</h3>
+                            <p>Reduz a latência do sistema em jogos competitivos, proporcionando tempos de resposta mais rápidos. Combina tecnologias de GPU e monitor para uma vantagem competitiva mensurável em jogos como Fortnite e Valorant.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="tech-content">
+                            <h3>NVIDIA CloudXR</h3>
+                            <p>Tecnologia proprietária que permite streaming de alta qualidade de conteúdo XR (Realidade Virtual e Aumentada). Otimizada para reduzir latência e manter a qualidade visual em ambientes de realidade virtual transmitidos pela nuvem.</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Como essas tecnologias funcionam no GeForce NOW?</h2>
+                    <p>Todas essas tecnologias avançadas são executadas nos servidores NVIDIA na nuvem, e os resultados são transmitidos para o seu dispositivo. Isso significa que você pode desfrutar de:</p>
+                    
+                    <ul>
+                        <li><strong>Ray Tracing</strong> em jogos como Cyberpunk 2077 e Minecraft RTX, mesmo em dispositivos modestos</li>
+                        <li><strong>DLSS</strong> melhorando desempenho e qualidade visual simultaneamente</li>
+                        <li><strong>Reflex</strong> reduzindo a latência para jogos competitivos</li>
+                        <li><strong>CloudXR</strong> possibilitando experiências VR sem PC potente</li>
+                    </ul>
+                    
+                    <div class="highlight">
+                        <p><strong>Nota:</strong> Algumas tecnologias como DLSS 3 e Reflex estão disponíveis apenas em planos superiores com GPUs RTX 40-series.</p>
+                    </div>
+                </article>
+            </div>
+            
+            <div id="tab5" class="tab-content">
+                <article>
+                    <h1>Jogos em Destaque <span class="badge">NOVO</span></h1>
+                    <p>Confira alguns dos jogos mais populares disponíveis em nossa plataforma, com suporte completo às tecnologias NVIDIA:</p>
+                    
+                    <div class="grid">
+                        <div class="grid-item">
+                            <img src="warzone.png" alt="Call of Duty Warzone">
+                            <h3>Call of Duty: Warzone</h3>
+                            <p>O battle royale gratuito da franquia Call of Duty, agora com suporte a DLSS e Reflex para vantagem competitiva.</p>
+                            <div class="highlight">
+                                <div><span class="feature-badge">RTX ON</span> <span class="feature-badge">DLSS</span> <span class="feature-badge">Reflex</span></div>
+                                <p><strong>Gênero:</strong> Battle Royale, FPS</p>
+                                <p><strong>Requisitos na nuvem:</strong> RTX 2080 ou superior</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Jogar agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <img src="cyberpunk.png" alt="Cyberpunk 2077">
+                            <h3>Cyberpunk 2077</h3>
+                            <p>Um RPG de mundo aberto ambientado em Night City, com ray tracing completo e DLSS para melhor desempenho.</p>
+                            <div class="highlight">
+                                <div><span class="feature-badge">RTX ON</span> <span class="feature-badge">DLSS 3</span></div>
+                                <p><strong>Gênero:</strong> RPG, Ação</p>
+                                <p><strong>Requisitos na nuvem:</strong> RTX 3080 ou superior</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Jogar agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <img src="fortnite.png" alt="Fortnite">
+                            <h3>Fortnite</h3>
+                            <p>O fenômeno cultural que combina construção com battle royale, agora com ray tracing e DLSS.</p>
+                            <div class="highlight">
+                                <div><span class="feature-badge">RTX ON</span> <span class="feature-badge">DLSS</span> <span class="feature-badge">Reflex</span></div>
+                                <p><strong>Gênero:</strong> Battle Royale</p>
+                                <p><strong>Requisitos na nuvem:</strong> RTX 2080 ou superior</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Jogar agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <img src="minecraft.png" alt="Minecraft RTX">
+                            <h3>Minecraft RTX</h3>
+                            <p>A versão com ray tracing do jogo mais vendido do mundo, transformando completamente sua aparência.</p>
+                            <div class="highlight">
+                                <div><span class="feature-badge">RTX ON</span> <span class="feature-badge">DLSS</span></div>
+                                <p><strong>Gênero:</strong> Sandbox, Aventura</p>
+                                <p><strong>Requisitos na nuvem:</strong> RTX 2060 ou superior</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Jogar agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <img src="witcher.png" alt="The Witcher 3">
+                            <h3>The Witcher 3: Wild Hunt</h3>
+                            <p>Aclamado RPG com atualização de ray tracing, mostrando como a tecnologia pode melhorar até jogos mais antigos.</p>
+                            <div class="highlight">
+                                <div><span class="feature-badge">RTX ON</span> <span class="feature-badge">DLSS 3</span></div>
+                                <p><strong>Gênero:</strong> RPG, Ação</p>
+                                <p><strong>Requisitos na nuvem:</strong> RTX 3060 ou superior</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Jogar agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <img src="valorant.png" alt="Valorant">
+                            <h3>Valorant</h3>
+                            <p>FPS tático da Riot Games com suporte a NVIDIA Reflex para latência ultrabaixa em situações competitivas.</p>
+                            <div class="highlight">
+                                <div><span class="feature-badge">Reflex</span></div>
+                                <p><strong>Gênero:</strong> FPS, Tático</p>
+                                <p><strong>Requisitos na nuvem:</strong> GTX 1080 ou superior</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Jogar agora</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Biblioteca em expansão</h2>
+                    <p>Nosso catálogo está sempre crescendo, com novos jogos adicionados semanalmente. Aqui estão algumas das franquias mais populares disponíveis:</p>
+                    
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>Franquias AAA</h3>
+                            <ul>
+                                <li>Assassin's Creed</li>
+                                <li>Battlefield</li>
+                                <li>Call of Duty</li>
+                                <li>Cyberpunk</li>
+                                <li>Far Cry</li>
+                                <li>The Witcher</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <h3>Jogos competitivos</h3>
+                            <ul>
+                                <li>Fortnite</li>
+                                <li>Valorant</li>
+                                <li>Apex Legends</li>
+                                <li>Dota 2</li>
+                                <li>League of Legends</li>
+                                <li>Counter-Strike 2</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <h3>Indies aclamados</h3>
+                            <ul>
+                                <li>Hades</li>
+                                <li>Stardew Valley</li>
+                                <li>Celeste</li>
+                                <li>Hollow Knight</li>
+                                <li>Dead Cells</li>
+                                <li>Undertale</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div id="tab6" class="tab-content">
+                <article>
+                    <h1>Exemplos de Jogos <span class="badge">NOVO</span></h1>
+                    <p>Veja mais exemplos incríveis de jogos disponíveis em nossa plataforma, com diferentes gêneros e estilos:</p>
+                    
+                    <div class="grid">
+                        <div class="grid-item">
+                            <img src="cyberpunk.png" alt="Exemplo de Jogo 1">
+                            <h3>Jogos de Ação</h3>
+                            <p>Experimente jogos de ação intensa com gráficos impressionantes e mecânicas inovadoras.</p>
+                            <div class="highlight">
+                                <p><strong>Exemplos:</strong> Doom Eternal, Devil May Cry 5, Control</p>
+                                <p><strong>Gênero:</strong> Ação, Aventura</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Experimente agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <img src="warzone.png" alt="Exemplo de Jogo 2">
+                            <h3>Jogos de Estratégia</h3>
+                            <p>Jogos de estratégia profunda com mecânicas complexas e tomadas de decisão importantes.</p>
+                            <div class="highlight">
+                                <p><strong>Exemplos:</strong> Civilization VI, XCOM 2, Crusader Kings III</p>
+                                <p><strong>Gênero:</strong> Estratégia, Tático</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Jogar agora</a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <img src="minecraft.png" alt="Minecraft">
+                            <h3>Jogos de Mundo Aberto</h3>
+                            <p>Explore vastos mundos abertos cheios de possibilidades e histórias cativantes.</p>
+                            <div class="highlight">
+                                <p><strong>Exemplos:</strong> Red Dead Redemption 2, Elden Ring, The Legend of Zelda: Breath of the Wild</p>
+                                <p><strong>Gênero:</strong> Aventura, RPG</p>
+                                <a href="#" class="btn"><i class="fas fa-play"></i> Explorar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Por que escolher GeForce NOW?</h2>
+                    <p>O GeForce NOW oferece vantagens exclusivas para jogadores de todos os tipos:</p>
+                    
+                    <div class="grid">
+                        <div class="grid-item">
+                            <i class="fas fa-money-bill-wave tech-icon"></i>
+                            <h3>Economia</h3>
+                            <p>Não precisa gastar milhares em hardware - jogue os jogos mais exigentes em dispositivos modestos.</p>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-bolt tech-icon"></i>
+                            <h3>Conveniência</h3>
+                            <p>Comece a jogar instantaneamente, sem downloads ou instalações demoradas.</p>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-sync-alt tech-icon"></i>
+                            <h3>Flexibilidade</h3>
+                            <p>Continue jogando de onde parou em qualquer dispositivo, a qualquer momento.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Pronto para começar?</h3>
+                        <p>Cadastre-se agora e comece a jogar em minutos. O plano gratuito não requer cartão de crédito e dá acesso imediato a centenas de jogos.</p>
+                        <a href="#" class="btn"><i class="fas fa-user-plus"></i> Criar conta gratuita</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Novas abas adicionadas aqui -->
+            <div id="tab7" class="tab-content">
+                <article>
+                    <h1>Nossos Produtos <span class="badge">NOVO</span></h1>
+                    
+                    <div class="card">
+                        <h3>Placas de Vídeo GeForce RTX</h3>
+                        <p>A linha de placas de vídeo mais avançada para jogos e criação de conteúdo, com tecnologias como Ray Tracing e DLSS.</p>
+                        <ul>
+                            <li>RTX 4090: Nossa placa mais poderosa</li>
+                            <li>RTX 4080: Alto desempenho para jogos 4K</li>
+                            <li>RTX 4070: Ótimo custo-benefício</li>
+                            <li>RTX 4060: Para jogadores que buscam valor</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Workstations NVIDIA</h3>
+                        <p>Soluções profissionais para criadores, engenheiros e cientistas de dados.</p>
+                        <ul>
+                            <li>NVIDIA RTX A6000: Para renderização profissional</li>
+                            <li>NVIDIA A100: Aceleração de IA e computação</li>
+                            <li>NVIDIA H100: A GPU mais avançada para data centers</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight">
+                        <p>Todos nossos produtos são desenvolvidos com foco em desempenho, eficiência energética e tecnologias inovadoras.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div id="tab8" class="tab-content">
+                <article>
+                    <h1>Tecnologias Exclusivas</h1>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="tech-content">
+                            <h3>DLSS 3.5</h3>
+                            <p>Nossa tecnologia de IA que aumenta performance mantendo qualidade visual, agora com Ray Reconstruction para melhor iluminação.</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="tech-content">
+                            <h3>Ray Tracing</h3>
+                            <p>Simulação física precisa de luz, sombras e reflexos para gráficos ultra-realistas em tempo real.</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="tech-content">
+                            <h3>Reflex</h3>
+                            <p>Reduz a latência do sistema para vantagem competitiva em jogos.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Inovação Constante</h3>
+                        <p>A NVIDIA investe mais de US$ 3 bilhões anualmente em pesquisa e desenvolvimento para trazer tecnologias revolucionárias ao mercado.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div id="tab9" class="tab-content">
+                <article>
+                    <h1>Sobre a NVIDIA</h1>
+                    
+                    <div class="card">
+                        <h3>Nossa História</h3>
+                        <p>Fundada em 1993, a NVIDIA começou como uma empresa de gráficos 3D e hoje é líder em computação acelerada e inteligência artificial.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Missão</h3>
+                        <p>Acelerar a computação para resolver problemas que antes eram considerados impossíveis.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Equipe</h3>
+                        <p>Mais de 26.000 funcionários em 50 países, liderados pelo visionário Jensen Huang desde a fundação.</p>
+                    </div>
+
+                    <div class="highlight">
+                        <p>"Na NVIDIA, acreditamos que o futuro será moldado pela computação acelerada e pela inteligência artificial." - Jensen Huang, CEO</p>
+                    </div>
+                </article>
+            </div>
+
+            <div id="tab10" class="tab-content">
+                <article>
+                    <h1>Fale Conosco</h1>
+                    
+                    <div class="card">
+                        <h3>Suporte Técnico</h3>
+                        <p>Disponível 24/7 para ajudar com qualquer problema relacionado a nossos produtos e serviços.</p>
+                        <p><i class="fas fa-phone"></i> +1 (800) 797-6530</p>
+                        <p><i class="fas fa-envelope"></i> support@nvidia.com</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Vendas Corporativas</h3>
+                        <p>Para empresas interessadas em nossas soluções profissionais.</p>
+                        <p><i class="fas fa-phone"></i> +1 (800) 797-6531</p>
+                        <p><i class="fas fa-envelope"></i> sales@nvidia.com</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Endereço</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> NVIDIA Corporation</p>
+                        <p>2788 San Tomas Expressway</p>
+                        <p>Santa Clara, CA 95051</p>
+                        <p>Estados Unidos</p>
+                    </div>
+
+                    <div class="highlight">
+                        <p>Horário de atendimento: Segunda a Sexta, das 9h às 18h (PST)</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#"><i class="fas fa-file-contract"></i> Termos de Serviço</a>
+            <a href="#"><i class="fas fa-lock"></i> Política de Privacidade</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Suporte</a>
+            <a href="#"><i class="fas fa-bug"></i> Reportar Problema</a>
+            <a href="#"><i class="fas fa-newspaper"></i> Blog</a>
+        </div>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+        
+        <div class="newsletter">
+            <h3>Assine nossa newsletter</h3>
+            <p>Receba as últimas notícias sobre jogos, atualizações e promoções.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail" required>
+                <button type="submit" class="newsletter-btn">Assinar</button>
+            </form>
+        </div>
+        
+        <p>© 2024 NVIDIA Corporation. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // Scroll suave para o topo do conteúdo
+                    document.getElementById(tabId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            
+            // Efeito de digitação no título
+            const title = document.querySelector('header h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                }
+            }, 100);
+            
+            // Animação de stats
+            const stats = document.querySelectorAll('.stat-number');
+            const statsValues = [1500, 25, 190];
+            const statsSuffix = ['+', 'M+', '+'];
+            
+            stats.forEach((stat, index) => {
+                let startValue = 0;
+                const endValue = statsValues[index];
+                const duration = 2000;
+                const increment = endValue / (duration / 16);
+                
+                const timer = setInterval(() => {
+                    startValue += increment;
+                    if (startValue >= endValue) {
+                        stat.textContent = endValue + statsSuffix[index];
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(startValue) + statsSuffix[index];
+                    }
+                }, 16);
+            });
+
+            // Navegação por hash
+            window.addEventListener('hashchange', function() {
+                const hash = window.location.hash.substring(1);
+                if (hash) {
+                    const tabBtn = document.querySelector(`.tab-btn[data-tab="${hash}"]`);
+                    if (tabBtn) {
+                        tabBtn.click();
+                    }
+                }
+            });
+
+            // Ativar aba baseada no hash ao carregar
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const tabBtn = document.querySelector(`.tab-btn[data-tab="${hash}"]`);
+                if (tabBtn) {
+                    tabBtn.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
